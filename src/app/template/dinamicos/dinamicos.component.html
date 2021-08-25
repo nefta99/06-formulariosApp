@@ -1,1 +1,40 @@
-<p>dinamicos works!</p>
+<h2>Templete : <small>Dinámicos</small></h2>
+<hr>
+<form  (ngSubmit)="guardar()" 
+        autocomplete="off"
+        #miFormulario="ngForm"
+    >
+    <div class="mb-3  row">
+        <label class="col-sm-3 col-form-label" >Nombre</label>
+        <div class="col-sm-9">
+            <input class="form-control " 
+                   placeholder="Nombre de la persona"
+                   ngModel
+                   name="Nombre"
+                   required
+            > 
+            <span class="form-text text-danger"
+                    *ngIf="hayErrorNombre()"
+            >
+                Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+       
+        <div class="col-sm-12">
+            <button type="button"
+                    class="btn btn-primary float-end"
+                    (click)="guardar()"
+                    [disabled]="miFormulario.invalid"
+                    >
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
+
+
