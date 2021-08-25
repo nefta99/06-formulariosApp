@@ -51,15 +51,12 @@ export class DinamicosComponent  {
 
 
   guardar(){
-     console.log(this.miFormulario);    
-
-
-    
-
-     
+     console.log(this.miFormulario);         
 
   }
-
+  eliminar(index : number){
+     this.persona.favoritos.splice(index,1);
+  }
 
   
 }
