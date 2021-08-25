@@ -20,7 +20,7 @@ export class DinamicosComponent implements OnInit {
   hayErrorNombre() :  boolean{
     let bandera : boolean = false;
      
-     if(this.miFormulario?.controls.Nombre?.errors && this.miFormulario?.controls.Nombre?.touched ){
+     if(this.miFormulario?.controls.nombre?.errors && this.miFormulario?.controls.nombre?.touched ){
        bandera =true;
      }
 
@@ -31,16 +31,12 @@ export class DinamicosComponent implements OnInit {
 
 
   guardar(){
-     //console.log(this.miFormulario);    
+     console.log(this.miFormulario);    
 
 
-     let bandera : boolean = false;
-     //  console.log(this.miFormulario.controls.Nombre.errors);
-     if(this.miFormulario!.controls.Nombre!.errors){
-       bandera =true;
-     }
+    
 
-     console.log("Hay error en nombre "+bandera);
+     
 
   }
 

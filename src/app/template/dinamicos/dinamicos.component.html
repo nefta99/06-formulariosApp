@@ -4,22 +4,55 @@
         autocomplete="off"
         #miFormulario="ngForm"
     >
+    <!-- Nombre -->
     <div class="mb-3  row">
         <label class="col-sm-3 col-form-label" >Nombre</label>
         <div class="col-sm-9">
             <input class="form-control " 
                    placeholder="Nombre de la persona"
                    ngModel
-                   name="Nombre"
+                   name="nombre"
                    required
             > 
             <span class="form-text text-danger"
-                    *ngIf="hayErrorNombre()"
+                    *ngIf="miFormulario.controls.nombre?.errors && miFormulario.controls.nombre?.touched "
             >
                 Este campo es obligatorio
             </span>
         </div>
     </div>
+
+    <!-- Agregar favorito -->
+    <div class="mb-3  row">
+        <label class="col-sm-3 col-form-label" >Agregar</label>
+        <div class="col-sm-9">
+
+            <div class="input-group">
+                <input class="form-control " 
+                placeholder="Agregar favorito" > 
+                
+                <button class="btn btn-outline-primary"
+                        type="button">
+                    Agregar
+                </button>
+            </div>
+
+            
+        </div>
+    </div>
+
+
+     <!-- Lista de juegos favoritos -->
+     <div class="mb-3  row">
+        <label class="col-sm-3 col-form-label" >Nombre</label>
+        <div class="col-sm-9">
+            <input class="form-control  mb-1" >               
+            <input class="form-control  mb-1" > 
+            <input class="form-control  mb-1" > 
+            <input class="form-control  mb-1" > 
+        </div>
+    </div>
+
 
 
 
