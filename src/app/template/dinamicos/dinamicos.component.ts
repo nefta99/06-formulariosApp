@@ -67,7 +67,7 @@ export class DinamicosComponent  {
 
     }
 
-    this.persona.favoritos.push(nuevoFavorito);
+    this.persona.favoritos.push({ ...nuevoFavorito  });
     this.nuevoJuego='';
   }
 
