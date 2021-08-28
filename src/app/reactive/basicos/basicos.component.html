@@ -2,8 +2,10 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form autocomplete="off"
+        <form   (ngSubmit)="guardar()"
+                autocomplete="off"
                 [formGroup]="miFormulario" 
+                
         > 
             <!-- Campo de producto -->
             <div class="mb-3 row">
@@ -15,7 +17,10 @@
                             formControlName="nombre"           
                             placeholder="Nombre del producto">
 
-                    <span class="form-text text-danger">Debe de ser de 3 letras</span >
+                    <span class="form-text text-danger"
+                            *ngIf="campoEsValido('nombre')">
+                            Debe de ser de 3 letras
+                    </span >
                 </div>
             </div>
             <!-- Campo de precio-->
@@ -27,7 +32,8 @@
                             formControlName="precio"   
                             placeholder="Precio del producto">
                     
-                    <span class="form-text text-danger">                
+                    <span class="form-text text-danger"
+                            *ngIf="campoEsValido('precio')">                
                         El precio debe de ser 0 o mayor
                     </span >
                 </div>
@@ -40,7 +46,11 @@
                     <input type="number"   
                             formControlName="existencias"               
                             class="form-control"
-                            placeholder="Existencias del producto">                   
+                            placeholder="Existencias del producto"> 
+                    <span class="form-text text-danger"
+                            *ngIf="campoEsValido('existencias')">                
+                        La existencias deben de ser 0 o mayor
+                    </span >                  
                 </div>
             </div>
 
@@ -48,7 +58,7 @@
                 <div class="col">
                     <button type="submit"                         
                         class="btn btn-primary float-end"
-                        [disabled]="miFormulario.invalid">
+                        >
 
                         Guardar
                     </button>
@@ -74,6 +84,10 @@
 
         <span>value</span>
         <pre>{{miFormulario.value | json }}</pre>
+
+
+        <span>Precio</span>
+        <pre>{{miFormulario.controls.precio.errors | json }}</pre>
 
         
     </div>
