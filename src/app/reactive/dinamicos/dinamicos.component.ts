@@ -60,4 +60,10 @@ export class DinamicosComponent  {
     
     this.nuevoFavorito.reset();
   }
+
+
+  borrar(i :number){
+    //this.miFormulario.spl
+    this.get_favoritosArr.removeAt(i);
+  }
 }
