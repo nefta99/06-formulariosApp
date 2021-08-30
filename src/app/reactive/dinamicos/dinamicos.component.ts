@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +18,10 @@ export class DinamicosComponent  {
       ['Death Stranding', Validators.required],
     ],Validators.required)
   })
+
+
+  nuevoFavorito : FormControl = this.fb.control('',Validators.required);
+
   constructor(private fb : FormBuilder) { }
 
  
@@ -40,7 +44,20 @@ export class DinamicosComponent  {
   }
 
   campoEsValido(campo : string ){
+    
     return this.miFormulario.controls[campo].errors && this.miFormulario.controls[campo].touched;
 
+  }
+
+  agregarFavorito(){
+    if(this.nuevoFavorito.invalid){      return;   }
+
+    //Con formcontrols
+    //this.get_favoritosArr.push(new FormControl(this.nuevoFavorito.value,Validators.required));
+
+    //con formbuilder
+    this.get_favoritosArr.push(this.fb.control(this.nuevoFavorito.value,Validators.required));
+    
+    this.nuevoFavorito.reset();
   }
 }
