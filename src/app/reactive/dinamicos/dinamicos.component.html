@@ -10,7 +10,9 @@
             <input class="form-control " 
                    formControlName="nombre"
                    placeholder="Nombre de la persona"> 
-            <span class="form-text text-danger">
+            <span class="form-text text-danger"
+                    *ngIf="campoEsValido('nombre')"
+                >
                 Este campo es obligatorio
             </span>
         </div>
@@ -40,16 +42,19 @@
 
      <!-- Lista de juegos favoritos -->
      <div class="mb-3  row">
-        <label class="col-sm-3 col-form-label" >Nombre</label>
-        <div class="col-sm-9">
-            <!-- <div class="input-group mb-1" *ngFor="let juego of persona.favoritos; let i =index">
-                <input   class="form-control">               
-                <button class="btn btn-outline-danger"
-                    (click)="asd()"
+        <label class="col-sm-3 col-form-label" >Favoritos</label>
+        <div class="col-sm-9" formArrayName="favoritos">
+
+            <div class="input-group mb-1" 
+                    *ngFor="let favorito of get_favoritosArr.controls; let i = index">
+                <input   class="form-control" [formControlName]="i">               
+                
+                
+                <button class="btn btn-outline-danger"                  
                     type="button">
                     Eliminar
                 </button>
-            </div> -->
+            </div>
             
         </div>
     </div>
@@ -69,14 +74,14 @@
     </div>
 </form>
 <span>valid</span>
-        <pre>{{miFormulario.valid}}</pre>
-
-        <span>pristine</span>
-        <pre>{{miFormulario.pristine}}</pre>
-
-        <span>Touched
-        </span>
-        <pre>{{miFormulario.touched}}</pre>
+<pre>{{miFormulario.valid}}</pre>
 
 <span>value</span>
-<pre>{{miFormulario.value | json }}</pre>>
+<pre>{{miFormulario.value | json }}</pre>
+<!-- 
+<span>Touched
+</span>
+<pre>{{miFormulario.touched}}</pre>
+
+<span>value</span>
+<pre>{{miFormulario.value | json }}</pre>> -->

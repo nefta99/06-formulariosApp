@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,19 +12,35 @@ export class DinamicosComponent  {
 
 
   miFormulario : FormGroup = this.fb.group({
-    nombre: ['',[Validators.required,Validators.minLength(3)]]
+    nombre: ['',[Validators.required,Validators.minLength(3)]],
+    favoritos: this.fb.array([
+      ['Metal Gear',Validators.required],
+      ['Death Stranding', Validators.required],
+    ],Validators.required)
   })
   constructor(private fb : FormBuilder) { }
 
  
+  get get_favoritosArr(){
+    
+    return this.miFormulario.get('favoritos') as FormArray;
+  }
+
   guardar(){
-    if(this.miFormulario.valid){
-      console.log("El formulario es valido")
-      console.log("Contenido del formulario "+this.miFormulario.controls['nombre'].value)
+    if(this.miFormulario.invalid){
+      this.miFormulario.markAllAsTouched();
+      return;
     }
+    //imprimir los valor del formulario, solo si es valido
+    console.log(this.miFormulario.value);
   }
 
   asd(){
     
+  }
+
+  campoEsValido(campo : string ){
+    return this.miFormulario.controls[campo].errors && this.miFormulario.controls[campo].touched;
+
   }
 }
