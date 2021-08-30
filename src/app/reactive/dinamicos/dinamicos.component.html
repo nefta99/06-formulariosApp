@@ -1,11 +1,14 @@
 <h2>Reactivos : <small>Dinámicos</small></h2>
 <hr>
-<form  autocomplete="off">
+<form [formGroup]="miFormulario"
+    (ngSubmit)="guardar()"
+     autocomplete="off">
     <!-- Nombre -->
     <div class="mb-3  row">
         <label class="col-sm-3 col-form-label" >Nombre</label>
         <div class="col-sm-9">
             <input class="form-control " 
+                   formControlName="nombre"
                    placeholder="Nombre de la persona"> 
             <span class="form-text text-danger">
                 Este campo es obligatorio
@@ -59,12 +62,21 @@
         <div class="col-sm-12">
             <button type="button"
                     class="btn btn-primary float-end"
-                    (click)="asd()">
+                    (click)="guardar()">
                 Guardar
             </button>
         </div>
     </div>
 </form>
+<span>valid</span>
+        <pre>{{miFormulario.valid}}</pre>
 
-<!-- <span>Persona</span>
-<pre>{{persona | json}}</pre> -->
+        <span>pristine</span>
+        <pre>{{miFormulario.pristine}}</pre>
+
+        <span>Touched
+        </span>
+        <pre>{{miFormulario.touched}}</pre>
+
+<span>value</span>
+<pre>{{miFormulario.value | json }}</pre>>
