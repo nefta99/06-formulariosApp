@@ -35,6 +35,36 @@ export class SwitchesComponent implements OnInit  {
       */
       condiciones : false 
     });
+
+
+    /*
+      Se comenta el codigo para demostrar que abajo hace lo mismo.
+    */
+    // this.miFormulario.valueChanges.subscribe(form =>{
+    //   delete form.condiciones;
+    //   this.persona = form;
+    // })
+
+    
+    /*Esto es para hacer lo mismo de arriba es exactamente igual
+      Lo unico que hacer es desestructar el formulario y quitar el las condiones
+      y con el operador rest ya quitada la variable condiciones pasa el perador rest a el objeto persona
+    */
+    this.miFormulario.valueChanges.subscribe(({condiciones, ...rest}) =>{
+      //delete form.condiciones;
+      this.persona = rest;
+    })
+
+
+  }
+
+  guardar(){
+
+    const formvalue = {...this.miFormulario.value};
+
+    delete formvalue.condiciones;
+    
+    this.persona = formvalue;
   }
 
 }
