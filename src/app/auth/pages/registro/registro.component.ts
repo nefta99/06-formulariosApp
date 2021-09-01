@@ -11,15 +11,23 @@ export class RegistroComponent implements OnInit {
   
 //TODO: Temperal
   nombreApellidoPattern : string ='([a-zA-Z]+) ([a-zA-Z]+)';
-
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['',[Validators.required,Validators.pattern(this.nombreApellidoPattern)]]
+    nombre: ['',[Validators.required,Validators.pattern(this.nombreApellidoPattern)]],
+    email : ['',[Validators.required, Validators.pattern(this.emailPattern)]]
   })
 
   constructor(private fb : FormBuilder) { }
 
   ngOnInit(): void {
+    /*
+      Con esto establecemos que nuestro formulario inicie con los valores de abajo definidos.
+    */
+    this.miFormulario.reset({
+      nombre : 'Israel Neftali',
+      email : 'israelneftali@gmail.com'
+    })
   }
 
   campoNoValido(campo: string){
@@ -29,7 +37,7 @@ export class RegistroComponent implements OnInit {
   submitFormulario(){
 
     console.log(this.miFormulario.value);
-    
+
     this.miFormulario.markAllAsTouched();
   }
 
