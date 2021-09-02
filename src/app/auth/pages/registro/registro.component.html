@@ -11,10 +11,10 @@
                     class="form-control"
                     formControlName="nombre"
                     placeholder="Nombre del usuario">
-                    <samp class="form-text text-danger" 
+                    <span class="form-text text-danger" 
                         *ngIf="campoNoValido('nombre')">
                         Debe de ser el formato de nombre y apellido
-                    </samp>
+                    </span>
                 </div>                
             </div>
             <!-- email -->
@@ -22,21 +22,13 @@
                 <label class="col-sm-3  col-form-label">Email</label>
                 <div class="col-sm-9">
                     <input type="email"
-                    formControlName="email"
-                    class="form-control"
-                    placeholder="Email del usuario">
-                    <samp class="form-text text-danger" 
-                        *ngIf="emailRequired()">
-                        El correo es obligatorio
-                    </samp>    
-                    <samp class="form-text text-danger" 
-                        *ngIf="emailFormato()">
-                        El valor ingresado no tiene el formato correcto
-                    </samp>   
-                    <samp class="form-text text-danger" 
-                    *ngIf="emailTomado()">
-                    El correo electronico ya fue tomado
-                </samp>              
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Email del usuario">
+                    <span class="form-text text-danger" 
+                        *ngIf="campoNoValido('email')">
+                        {{get_emailErrorMsg}}
+                    </span>           
                    
                 </div>                
             </div>
@@ -48,10 +40,10 @@
                         class="form-control"
                         formControlName="username"
                         placeholder="Nombre código de usuario">       
-                    <samp class="form-text text-danger" 
+                    <span class="form-text text-danger" 
                         *ngIf="campoNoValido('username')">
                         El username no puede ser Strider
-                    </samp>              
+                    </span>              
                 </div>                
             </div>
 
@@ -63,10 +55,10 @@
                         formControlName="password"
                         class="form-control"
                         placeholder="password de su cuenta">
-                    <samp class="form-text text-danger" 
-                    *ngIf="campoNoValido('password')">
-                    El password debe de ser mayor de 6 caracteres
-                </samp>  
+                    <span class="form-text text-danger" 
+                        *ngIf="campoNoValido('password')">
+                        El password debe de ser mayor de 6 caracteres
+                    </span>  
                    
                 </div>                
             </div>
@@ -78,10 +70,10 @@
                         formControlName="password2"
                         class="form-control"
                         placeholder="Confirmar la contraseña">
-                    <samp class="form-text text-danger" 
+                    <span class="form-text text-danger" 
                             *ngIf="campoNoValido('password2')">
                     Las contraseñas deben de ser iguales
-                    </samp>  
+                    </span>  
                 </div>                
             </div>
             <div class="row">

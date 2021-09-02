@@ -16,7 +16,6 @@ export class RegistroComponent implements OnInit {
 
 
 
-
   miFormulario: FormGroup = this.fb.group({
     nombre: ['',[Validators.required,Validators.pattern(this.validatorservices.nombreApellidoPattern)]],
     email : ['',[Validators.required, Validators.pattern(this.validatorservices.emailPattern)],[this.emailValidator]],
@@ -26,6 +25,27 @@ export class RegistroComponent implements OnInit {
   },{
     validators : [this.validatorservices.camposIguales('password','password2')]
   })
+
+
+
+  
+
+
+  get get_emailErrorMsg() : string{
+    
+    const errors = this.miFormulario.get('email')?.errors;
+    if(errors?.required){
+      return "Email es obligatorio";
+    }else if(errors?.pattern){
+      return "El valor ingresado no tiene formato de correo electronico";
+    }else if(errors?.emailTomado){
+      return "El email ya fue tomado";
+    }
+    
+
+    return "";
+
+  }
 
   constructor(private fb : FormBuilder,
               private validatorservices: ValidatorService,
@@ -55,22 +75,5 @@ export class RegistroComponent implements OnInit {
     this.miFormulario.markAllAsTouched();
   }
 
-  emailRequired(){
-    return this.miFormulario.get('email')?.errors?.required
-      &&this.miFormulario.get('email')?.touched;
-  }
-
-
-  emailFormato(){
-    return this.miFormulario.get('email')?.errors?.pattern
-      &&this.miFormulario.get('email')?.touched;
-  }
-
-  
-
-  emailTomado(){
-    return this.miFormulario.get('email')?.errors?.emailTomado
-      &&this.miFormulario.get('email')?.touched;
-  }
 
 }
